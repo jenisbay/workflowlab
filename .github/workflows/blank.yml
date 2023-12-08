@@ -40,5 +40,5 @@ jobs:
           echo What about build tools?
           mvn --version
           grandle --version
-          and -version
+          ant -version
           
