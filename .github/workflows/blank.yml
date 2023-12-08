@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build-on-windows:
     
-    runs-on: windows-latest:
+    runs-on: windows-latest
     steps:
       - name: Step 1 - Log the pre-build dics space
         run: ls
