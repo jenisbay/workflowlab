@@ -18,7 +18,7 @@ jobs:
       - name: Create a comment with API
         run: |
           gh api -X POST \ http://api.github.repo/${ORGANIZATION}/issues/${ISSUE_NUMBER}/comments \
-          -f body ='
+          -f body='
           Comment but from the API call not action
           '
         env:
