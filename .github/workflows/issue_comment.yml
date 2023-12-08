@@ -6,23 +6,23 @@ on:
 
 jobs:
   comment-with:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: "dump github context"
         run: echo '${{ toJSON(github.event) }}' | jq
         shell: bash
 
-  # comment-with-api:
-  #   runs-on: windows-latest
-  #   steps:
-  #     - name: Create a comment with API
-  #       run: |
-  #         gh api -X POST http://api.github.com/repo/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments -f body='Comment but from the API call not action'
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         ORGANIZATION: ${{ github.event.organization.login }}
-  #         REPOSITORY: ${{ github.event.repository.name }}
-  #         ISSUE_NUMBER: ${{ github.event.issue.number }}
+  comment-with-api:
+    runs-on: windows-latest
+    steps:
+      - name: Create a comment with API
+        run: |
+          gh api -X POST http://api.github.com/repo/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments -f body='Comment but from the API call not action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORGANIZATION: ${{ github.event.organization.login }}
+          REPOSITORY: ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
           
 
       # - name: Create comment
