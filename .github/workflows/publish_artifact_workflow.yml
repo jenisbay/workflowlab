@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+name: Public GitHub Actions Artifacts Example
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+
+jobs:
+  archive-build-artifacts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 - Create a temporary artifact downloads folder
+        run: mkdir downloads
+
+      - name: Step 2 - Add Artifacts to publish to the temp folder
+        run: |
+          cd downloads
+          echo 'bir' > bir.txt
+          echo 'eki' > eki.txt
+          echo 'ush' > ush.txt
+          cd ..
+
+      - name: Step 3 - Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets-for-download
+          path: downloads
+    
